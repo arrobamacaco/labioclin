@@ -12,13 +12,13 @@ export function HomeBanner({
       aria-label="Destaque principal"
       className="relative w-full"
     >
-      <div className="relative mx-auto aspect-[16/7] w-full min-h-[320px] overflow-hidden lg:w-[90%] lg:rounded-2xl sm:min-h-[400px] lg:min-h-[480px]">
+      <div className="relative mx-auto aspect-[16/7] w-full min-h-[320px] overflow-hidden sm:min-h-[400px] lg:min-h-[480px] lg:w-[90%] lg:max-w-[1440px] lg:rounded-2xl">
         <Image
           src={imageSrc}
           alt="Profissional de laboratório realizando análises clínicas"
           fill
           priority
-          sizes="(min-width: 1024px) 90vw, 100vw"
+          sizes="(min-width: 1024px) 1440px, 100vw"
           className="object-cover contrast-110"
         />
         <div

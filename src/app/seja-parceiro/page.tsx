@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { PageShell } from "@/components/page-shell";
+import { PartnerPage } from "@/components/partner-page";
 
 export const metadata: Metadata = {
   title: "Seja parceiro | Labioclin",
-  description: "Torne-se parceiro do Labioclin.",
+  description:
+    "Alugue uma sala no Labioclin e atenda seus pacientes com salas climatizadas, recepção, sala de espera e toda a estrutura do laboratório.",
 };
 
 export default function SejaParceiroPage() {
-  return (
-    <PageShell
-      title="Seja parceiro"
-      description="Interessado em uma parceria com o Labioclin? Entre em contato conosco para conhecer as possibilidades de colaboração. Em breve, mais detalhes sobre o programa de parceiros."
-    />
-  );
+  return <PartnerPage />;
 }

@@ -13,17 +13,17 @@ export type LabUnit = {
 };
 
 export const mainUnit: LabUnit = {
-  name: "Labioclin — Unidade Centro",
+  name: "Labioclin - Unidade Centro",
   street: "Rua Rui Barbosa, nº 272",
   neighborhood: "Centro",
   city: "Riacho de Santana",
   state: "BA",
-  zipCode: "86.400-000",
+  zipCode: "46470-000",
   phones: [
     {
-      label: "WhatsApp / celular",
-      display: "(77) 9975-6576",
-      href: "tel:+557799756576",
+      label: "WhatsApp / Celular",
+      display: "(77) 99910-4636",
+      href: "tel:+5577999104636",
     },
     {
       label: "Telefone fixo",
@@ -32,8 +32,8 @@ export const mainUnit: LabUnit = {
     },
   ],
   whatsapp: {
-    display: "(77) 9975-6576",
-    href: "https://wa.me/557799756576",
+    display: "(77) 99910-4636",
+    href: "https://wa.me/5577999104636",
   },
   email: {
     display: "julianoeverton@yahoo.com.br",
@@ -41,16 +41,16 @@ export const mainUnit: LabUnit = {
   },
   schedules: [
     {
-      label: "Coleta de exames",
-      value: "Confirme o horário pelo telefone ou WhatsApp antes da visita.",
+      label: "Segunda a sexta",
+      value: "6h30 às 12h / 14h às 17h",
     },
     {
-      label: "Retirada de laudos",
-      value: "Confirme o horário pelo telefone ou WhatsApp antes da visita.",
+      label: "Sábados",
+      value: "6h30 às 12h",
     },
   ],
   mapsQuery:
-    "Rua+Rui+Barbosa+272+Centro+Riacho+de+Santana+BA+86400-000",
+    "Rua+Rui+Barbosa+272+Centro+Riacho+de+Santana+BA+46470-000",
 };
 
 export function getMapsEmbedUrl(query: string) {

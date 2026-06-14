@@ -121,7 +121,7 @@ export function HomeUnits() {
   return (
     <section
       aria-labelledby="units-heading"
-      className="bg-zinc-50 px-6 py-16 sm:px-10 sm:py-20 lg:px-16"
+      className="bg-zinc-50 px-6 py-8 sm:px-10 sm:py-20 lg:px-16"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">

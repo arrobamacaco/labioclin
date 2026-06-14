@@ -1,13 +1,28 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
+
+const faqLinkClassName =
+  "font-semibold text-[#bc7a9e] underline underline-offset-2 transition-colors hover:text-[#a5688a]";
+
 export type FaqItem = {
   question: string;
-  answer: string;
+  answer: ReactNode;
 };
 
 export const faqItems: FaqItem[] = [
   {
     question: "Preciso de jejum para fazer exames?",
-    answer:
-      "Depende do exame solicitado pelo seu médico. Alguns exames exigem jejum de 8 a 12 horas; outros não. Confira as orientações no pedido médico ou entre em contato conosco antes da coleta para evitar a necessidade de refazer o exame.",
+    answer: (
+      <>
+        Depende do exame solicitado pelo seu médico. Alguns exames exigem jejum
+        de 8 a 12 horas; outros não. Confira as orientações no pedido médico ou
+        consulte nossa{" "}
+        <Link href="/instrucoes-para-exames" className={faqLinkClassName}>
+          página de instruções para exames
+        </Link>{" "}
+        antes da coleta para evitar a necessidade de refazer o exame.
+      </>
+    ),
   },
   {
     question: "Em quanto tempo o resultado fica disponível?",

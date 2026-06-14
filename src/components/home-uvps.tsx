@@ -122,7 +122,7 @@ function UvpIcon({ icon }: { icon: Uvp["icon"] }) {
 function UvpCard({ title, description, icon }: Uvp) {
   return (
     <article className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#bc7a9e]/10">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-[8px] bg-[#bc7a9e]/10">
         <UvpIcon icon={icon} />
       </div>
       <h3 className="text-lg font-semibold text-zinc-900">{title}</h3>
@@ -135,7 +135,7 @@ export function HomeUvps() {
   return (
     <section
       aria-labelledby="uvps-heading"
-      className="bg-zinc-50 px-6 py-16 sm:px-10 sm:py-20 lg:px-16"
+      className="bg-zinc-50 px-6 py-8 sm:px-10 sm:py-20 lg:px-16"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">

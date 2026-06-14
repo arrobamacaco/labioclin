@@ -92,7 +92,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/75 px-3 py-1.5 shadow-sm backdrop-blur-xl sm:px-4 sm:py-2">
+        <div className="flex items-center justify-between gap-3 rounded-[8px] bg-white/75 px-3 py-1.5 shadow-sm backdrop-blur-xl sm:px-4 sm:py-2">
           <Link href="/" className="shrink-0" onClick={() => setMenuOpen(false)}>
             <Image
               src="/labioclin_logo.svg"
@@ -151,7 +151,7 @@ export function Header() {
           }`}
         >
           <nav
-            className="mt-2 flex flex-col gap-1 rounded-2xl bg-white/75 p-3 shadow-sm backdrop-blur-xl"
+            className="mt-2 flex flex-col gap-1 rounded-[8px] bg-white/75 p-3 shadow-sm backdrop-blur-xl"
             aria-label="Navegação mobile"
           >
             {navLinks.map(({ href, label }) => {
@@ -160,7 +160,7 @@ export function Header() {
                 <Link
                   key={href}
                   href={href}
-                  className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`rounded-[8px] px-4 py-3 text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-zinc-100 text-zinc-900"
                       : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"

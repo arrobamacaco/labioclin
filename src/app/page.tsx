@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HomeBanner } from "@/components/home-banner";
 import { HomeExamResults } from "@/components/home-exam-results";
 import { HomeFaq } from "@/components/home-faq";
+import { HomePncq } from "@/components/home-pncq";
 import { HomeUnits } from "@/components/home-units";
 import { HomeUvps } from "@/components/home-uvps";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <HomeBanner />
       <HomeExamResults />
       <HomeUvps />
+      <HomePncq />
       <HomeUnits />
       <HomeFaq />
     </>

@@ -87,7 +87,7 @@ export function Footer() {
                   {unit.street}
                 </span>
                 <span className="block text-zinc-400">
-                  {unit.neighborhood} — {unit.city}/{unit.state}
+                  {unit.neighborhood} - {unit.city}/{unit.state}
                 </span>
                 <span className="block text-zinc-400">CEP {unit.zipCode}</span>
               </p>

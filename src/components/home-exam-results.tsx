@@ -55,7 +55,7 @@ export function HomeExamResults({
   return (
     <section
       aria-labelledby="exam-results-heading"
-      className="px-6 py-16 sm:px-10 sm:py-20 lg:px-16"
+      className="px-6 py-8 sm:px-10 sm:py-20 lg:px-16"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
