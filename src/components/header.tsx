@@ -6,18 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { EXAM_RESULTS_URL, navLinks } from "@/lib/navigation";
 
-function MenuIcon({ open }: { open: boolean }) {
+function MenuIcon() {
   return (
     <span className="relative flex h-5 w-6 flex-col justify-center" aria-hidden>
       <span
-        className={`block h-0.5 w-full rounded-full bg-zinc-900 transition-all duration-200 ${
-          open ? "translate-y-0.5 rotate-45" : "-translate-y-1"
-        }`}
+        className="block h-0.5 w-full -translate-y-1 rounded-full bg-zinc-900 transition-transform duration-200 group-open:translate-y-0.5 group-open:rotate-45"
       />
       <span
-        className={`block h-0.5 w-full rounded-full bg-zinc-900 transition-all duration-200 ${
-          open ? "translate-y-0 -rotate-45" : "translate-y-1"
-        }`}
+        className="block h-0.5 w-full translate-y-1 rounded-full bg-zinc-900 transition-transform duration-200 group-open:translate-y-0 group-open:-rotate-45"
       />
     </span>
   );
@@ -36,7 +32,7 @@ function ExamResultsButton({
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}
-      className={`flex shrink-0 items-center justify-center rounded-full bg-[#434142] text-sm font-medium text-white transition-colors hover:bg-[#393839] ${className}`}
+      className={`flex shrink-0 items-center justify-center rounded-full bg-[#511134] text-sm font-medium text-white transition-colors hover:bg-[#3d0d28] ${className}`}
     >
       Resultados de Exames
     </a>
@@ -45,17 +41,19 @@ function ExamResultsButton({
 
 export function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
   const lastScrollY = useRef(0);
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
-    setMenuOpen(false);
+    if (mobileMenuRef.current) {
+      mobileMenuRef.current.open = false;
+    }
   }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => {
-      if (menuOpen) return;
+      if (mobileMenuRef.current?.open) return;
 
       const currentScrollY = window.scrollY;
       const scrollDelta = currentScrollY - lastScrollY.current;
@@ -74,33 +72,28 @@ export function Header() {
     lastScrollY.current = window.scrollY;
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
-  const isHeaderVisible = headerVisible || menuOpen;
+  }, []);
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-transparent px-4 pt-3 transition-transform duration-300 ease-in-out sm:px-6 ${
-        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+        headerVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
       <div className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between gap-3 rounded-[8px] bg-white/75 px-3 py-1.5 shadow-sm backdrop-blur-xl sm:px-4 sm:py-2">
-          <Link href="/" className="shrink-0" onClick={() => setMenuOpen(false)}>
+        <div className="relative z-10 flex items-center justify-between gap-3 rounded-[8px] bg-white/75 px-3 py-1.5 shadow-sm backdrop-blur-xl sm:px-4 sm:py-2">
+          <Link
+            href="/"
+            className="shrink-0"
+            onClick={() => mobileMenuRef.current?.removeAttribute("open")}
+          >
             <Image
-              src="/labioclin_logo.svg"
-              alt="Labioclin"
-              width={110}
-              height={20}
+              src="/labioclin_final_logo.png"
+              alt="Labioclin Laboratório"
+              width={184}
+              height={51}
               priority
-              className="h-5 max-w-[190px] w-auto sm:h-6"
+              className="h-7 max-w-[190px] w-auto sm:h-8"
             />
           </Link>
 
@@ -131,53 +124,49 @@ export function Header() {
               <ExamResultsButton className="px-4 py-2" />
             </div>
 
-            <button
-              type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-900 transition-colors hover:bg-zinc-100 lg:hidden"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-nav"
-              aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-              onClick={() => setMenuOpen((open) => !open)}
-            >
-              <MenuIcon open={menuOpen} />
-            </button>
-          </div>
-        </div>
+            <details ref={mobileMenuRef} className="group lg:hidden">
+              <summary
+                className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-lg text-zinc-900 transition-colors hover:bg-zinc-100 [&::-webkit-details-marker]:hidden"
+                aria-label="Abrir ou fechar menu"
+              >
+                <MenuIcon />
+              </summary>
 
-        <div
-          id="mobile-nav"
-          className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
-            menuOpen ? "max-h-[28rem] opacity-100" : "max-h-0 opacity-0"
-          }`}
-        >
-          <nav
-            className="mt-2 flex flex-col gap-1 rounded-[8px] bg-white/75 p-3 shadow-sm backdrop-blur-xl"
-            aria-label="Navegação mobile"
-          >
-            {navLinks.map(({ href, label }) => {
-              const isActive = pathname === href;
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`rounded-[8px] px-4 py-3 text-sm font-medium transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 text-zinc-900"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
-                  }`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {label}
-                </Link>
-              );
-            })}
-            <div className="mt-2 pt-3">
-              <ExamResultsButton
-                className="w-full py-3 text-sm"
-                onClick={() => setMenuOpen(false)}
-              />
-            </div>
-          </nav>
+              <nav
+                id="mobile-nav"
+                className="fixed inset-x-0 top-[4.5rem] mx-auto flex max-w-6xl flex-col gap-1 rounded-[8px] border border-solid border-[#d2d2d2] bg-white p-3 shadow-sm backdrop-blur-xl"
+                aria-label="Navegação mobile"
+              >
+                {navLinks.map(({ href, label }) => {
+                  const isActive = pathname === href;
+                  return (
+                    <Link
+                      key={href}
+                      href={href}
+                      className={`rounded-[8px] px-4 py-3 text-sm font-medium transition-colors ${
+                        isActive
+                          ? "bg-zinc-100 text-zinc-900"
+                          : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
+                      }`}
+                      onClick={() =>
+                        mobileMenuRef.current?.removeAttribute("open")
+                      }
+                    >
+                      {label}
+                    </Link>
+                  );
+                })}
+                <div className="mt-2 pt-3">
+                  <ExamResultsButton
+                    className="w-full py-3 text-sm"
+                    onClick={() =>
+                      mobileMenuRef.current?.removeAttribute("open")
+                    }
+                  />
+                </div>
+              </nav>
+            </details>
+          </div>
         </div>
       </div>
     </header>

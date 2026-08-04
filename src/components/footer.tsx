@@ -29,17 +29,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-zinc-800 bg-[#434142] text-zinc-300">
+    <footer className="border-t border-zinc-800 bg-[#000] text-zinc-300">
       <div className="mx-auto max-w-6xl px-6 py-14 sm:px-10 lg:px-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-block">
               <Image
-                src="/labioclin_logo.svg"
-                alt="Labioclin"
-                width={130}
-                height={24}
-                className="h-6 w-auto"
+                src="/labioclin_final_logo.png"
+                alt="Labioclin Laboratório"
+                width={184}
+                height={51}
+                className="h-8 w-auto"
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-400">

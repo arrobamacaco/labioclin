@@ -7,6 +7,15 @@ export const metadata: Metadata = {
     "Orientações de preparo e coleta para os principais exames realizados no Labioclin.",
 };
 
-export default function InstrucoesParaExamesPage() {
-  return <ExamInstructionsPage />;
+type InstrucoesParaExamesPageProps = {
+  searchParams: Promise<{ busca?: string | string[] }>;
+};
+
+export default async function InstrucoesParaExamesPage({
+  searchParams,
+}: InstrucoesParaExamesPageProps) {
+  const { busca } = await searchParams;
+  const query = typeof busca === "string" ? busca : "";
+
+  return <ExamInstructionsPage query={query} />;
 }

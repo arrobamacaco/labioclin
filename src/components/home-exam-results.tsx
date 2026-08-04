@@ -90,7 +90,7 @@ export function HomeExamResults({
                 href={EXAM_RESULTS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#434142] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#393839] sm:text-base"
+                className="inline-flex items-center gap-2 rounded-full bg-[#511134] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#3d0d28] sm:text-base"
               >
                 Resultados de Exames
                 <ExternalLinkIcon />

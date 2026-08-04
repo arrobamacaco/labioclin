@@ -1,3 +1,4 @@
+import { BackToHome } from "@/components/back-to-home";
 import { mainUnit } from "@/lib/units";
 
 const amenities = [
@@ -148,7 +149,7 @@ function PartnerCta() {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-[#434142] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#393839] sm:text-base"
+            className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-[#1fb855] sm:text-base"
           >
             Falar pelo WhatsApp
           </a>
@@ -159,6 +160,7 @@ function PartnerCta() {
             Enviar e-mail
           </a>
         </div>
+        <BackToHome className="mt-12 border-t border-zinc-100 pt-10" />
       </div>
     </section>
   );
