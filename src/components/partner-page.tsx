@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { BackToHome } from "@/components/back-to-home";
 import { mainUnit } from "@/lib/units";
 
@@ -17,6 +18,11 @@ type PartnerSectionProps = {
   paragraphs: string[];
   highlight: string;
   reversed?: boolean;
+  items?: readonly string[];
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
 function CheckIcon() {
@@ -44,6 +50,8 @@ function PartnerSection({
   paragraphs,
   highlight,
   reversed = false,
+  items = amenities,
+  image,
 }: PartnerSectionProps) {
   return (
     <section
@@ -75,20 +83,37 @@ function PartnerSection({
           </div>
 
           <div className="relative">
-            <div
-              aria-hidden
-              className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#bc7a9e]/15 via-transparent to-[#434142]/10 sm:-inset-6"
-            />
-            <ul className="relative space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
-              {amenities.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-zinc-700">
-                  <CheckIcon />
-                  <span className="text-sm leading-relaxed sm:text-base">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {image ? (
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 36rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <>
+                <div
+                  aria-hidden
+                  className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#bc7a9e]/15 via-transparent to-[#434142]/10 sm:-inset-6"
+                />
+                <ul className="relative space-y-3 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
+                  {items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-zinc-700"
+                    >
+                      <CheckIcon />
+                      <span className="text-sm leading-relaxed sm:text-base">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -100,7 +125,7 @@ function PartnerHero() {
   return (
     <section
       aria-labelledby="partner-hero-heading"
-      className="bg-zinc-50 px-6 pt-20 pb-16 sm:px-10 sm:pt-8 sm:pb-20 lg:px-16"
+      className="bg-zinc-50 px-6 pt-20 pb-16 sm:px-10 sm:pt-8 sm:pb-10 lg:px-16"
     >
       <div className="mx-auto w-full max-w-3xl text-center">
         <p className="text-sm font-medium uppercase tracking-wider text-[#bc7a9e]">
@@ -112,11 +137,32 @@ function PartnerHero() {
         >
           Seja parceiro
         </h1>
-        <p className="mt-6 text-lg leading-relaxed text-zinc-600 sm:text-xl">
-          Alugue uma sala no Labioclin e atenda aos seus pacientes utilizando toda
-          a estrutura do laboratório, com conforto, praticidade e credibilidade.
-        </p>
       </div>
+
+      <div className="relative mx-auto mt-10 aspect-[16/7] w-full min-h-[280px] max-w-6xl overflow-hidden rounded-2xl sm:mt-12 sm:min-h-[360px] lg:mt-10 lg:min-h-[440px]">
+        <Image
+          src="/banner_seja_parceiro.webp"
+          alt="Profissionais da saúde atendendo pacientes na estrutura do Labioclin"
+          fill
+          priority
+          sizes="(min-width: 1024px) 72rem, 100vw"
+          className="object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20"
+        />
+        <div className="absolute inset-0 flex items-center px-6 sm:px-10 lg:px-16">
+          <p className="max-w-xl text-balance text-2xl font-semibold leading-tight tracking-tight text-white drop-shadow-md sm:text-3xl lg:text-4xl">
+            Atenda aos seus pacientes utilizando nossa estrutura.
+          </p>
+        </div>
+      </div>
+
+      <p className="mx-auto mt-10 max-w-3xl text-center text-lg leading-relaxed text-zinc-600 sm:mt-12 sm:text-xl">
+        Alugue uma sala no Labioclin e atenda aos seus pacientes utilizando toda
+        a estrutura do laboratório, com conforto, praticidade e credibilidade.
+      </p>
     </section>
   );
 }
@@ -185,21 +231,32 @@ export function PartnerPage() {
         eyebrow="Menos preocupações"
         title="Mais profissionalismo, menos preocupações"
         paragraphs={[
-          "Atenda seus pacientes em um espaço moderno, confortável e pronto para receber você.",
-          "No Labioclin, profissionais da saúde encontram salas equipadas, ambiente climatizado, recepção para apoio no atendimento ao público e toda a estrutura necessária para realizar consultas com tranquilidade e segurança.",
+          "O Labioclin oferece recepção com suporte completo ao atendimento: controle de agenda, marcação de consultas e organização dos agendamentos.",
+          "Toda a capacidade técnica da nossa equipe está à disposição para que você foque no que importa: o cuidado com seus pacientes, com tranquilidade e segurança.",
         ]}
         highlight="Eleve a experiência dos seus pacientes e fortaleça sua atuação profissional. Entre em contato e conheça nossos espaços."
         reversed
+        image={{
+          src: "/teclado_img.webp",
+          alt: "Mãos digitando no teclado na recepção do Labioclin",
+        }}
       />
       <PartnerSection
         id="partner-environment-heading"
         eyebrow="Seu trabalho em destaque"
         title="Um ambiente que valoriza o seu trabalho"
         paragraphs={[
-          "Seus pacientes merecem um atendimento de qualidade desde a chegada até o final da consulta.",
-          "Ao realizar seus atendimentos no Labioclin, você conta com salas aconchegantes, equipamentos novos, recepção para suporte ao agendamento, sala de espera confortável e toda a infraestrutura necessária para exercer sua profissão com excelência.",
+          "Localizado no centro da cidade, o Labioclin tem fácil acesso, estacionamento facilitado nas proximidades e estrutura acessível para pacientes com deficiência. Ao realizar seus atendimentos aqui, você conta com salas aconchegantes, equipamentos novos, recepção para suporte ao agendamento, sala de espera confortável e toda a infraestrutura necessária para exercer sua profissão com excelência.",
         ]}
         highlight="Agende uma visita e descubra como o Labioclin pode ser o espaço ideal para o crescimento da sua atuação profissional."
+        items={[
+          "Localização central, de fácil acesso",
+          "Estacionamento facilitado nas proximidades",
+          "Estrutura acessível para pacientes com deficiência (PCD)",
+          "Salas aconchegantes com equipamentos novos",
+          "Recepção com suporte completo ao agendamento",
+          "Sala de espera confortável para seus pacientes",
+        ]}
       />
       <PartnerCta />
     </>

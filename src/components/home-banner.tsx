@@ -5,7 +5,7 @@ type HomeBannerProps = {
 };
 
 export function HomeBanner({
-  imageSrc = "/home-banner.jpg",
+  imageSrc = "/banner_main.webp",
 }: HomeBannerProps) {
   return (
     <section
@@ -15,7 +15,7 @@ export function HomeBanner({
       <div className="relative mx-auto aspect-[16/7] w-full min-h-[320px] overflow-hidden sm:min-h-[400px] lg:min-h-[480px] lg:w-[90%] lg:max-w-[1440px] lg:rounded-2xl">
         <Image
           src={imageSrc}
-          alt="Profissional de laboratório realizando análises clínicas"
+          alt="Fachada do Laboratório Labioclin"
           fill
           priority
           sizes="(min-width: 1024px) 1440px, 100vw"
@@ -27,11 +27,11 @@ export function HomeBanner({
         />
         <div className="absolute inset-0 flex items-center px-6 pt-20 sm:px-10 sm:pt-8 lg:px-16">
           <div className="mx-auto w-full max-w-6xl">
-            <h1 className="max-w-2xl text-balance text-3xl font-semibold leading-tight tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-6xl">
+            <h1 className="max-w-2xl text-balance text-3xl font-semibold leading-[1.15] tracking-tight text-white drop-shadow-md sm:text-4xl lg:text-6xl">
               Precisão nos laudos, cuidado{" "}
               <span className="whitespace-nowrap">com você</span>
             </h1>
-            <p className="mt-4 max-w-xl text-balance text-base leading-relaxed text-white/90 drop-shadow-sm sm:text-lg">
+            <p className="mt-4 max-w-xl text-balance text-base leading-snug text-white/90 drop-shadow-sm sm:text-lg">
               Análises clínicas com rigor técnico e
               atendimento humanizado{" "}
               <span className="whitespace-nowrap">em cada etapa</span>.
