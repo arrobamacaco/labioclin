@@ -27,7 +27,7 @@ export function HomePncq({ logoSrc = "/PNCQ_logotipo.png" }: HomePncqProps) {
           id="pncq-heading"
           className="mt-3 text-balance text-3xl font-semibold tracking-tight text-black sm:text-4xl"
         >
-          Mais de 10 anos com nota máxima consecutiva
+          Mais de 13 anos com nota máxima consecutiva
         </h2>
         <p className="mt-6 text-balance text-base leading-relaxed text-[#434142] sm:text-lg">
           O Labioclin participa anualmente do Programa Nacional de Controle de

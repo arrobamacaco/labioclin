@@ -1,4 +1,4 @@
-export const EXAM_RESULTS_URL = "https://labioclin.com.br/logins/login";
+export const EXAM_RESULTS_URL = "https://labioclin.uniexames.srv.br/logins/login";
 
 export const navLinks = [
   { href: "/", label: "Home" },
